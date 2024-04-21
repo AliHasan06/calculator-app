@@ -1,21 +1,37 @@
 #! /usr/bin/env node
-import inquirer from "inquirer";
 
-const answer = await inquirer.prompt([
-    { message: "Enter first number", type: "number", name: "firstNumber" },
-    { message: "Enter second number", type: "number", name: "secondNumber" },
-    { message: "Select one of the operators to perform action", type: "list", name: "operator", choices: ["addition", "subtraction", "multiplication", "division"] }
-]);
+import { log } from 'console';
+import inquirer from 'inquirer';
 
-// Conditional statement
-if (answer.operator === "addition") {
-    console.log(answer.firstNumber + answer.secondNumber);
-} else if (answer.operator === "subtraction") {
-    console.log(answer.firstNumber - answer.secondNumber);
-} else if (answer.operator === "multiplication") {
-    console.log(answer.firstNumber * answer.secondNumber);
-} else if (answer.operator === "division") {
-    console.log(answer.firstNumber / answer.secondNumber);
-} else {
-    console.log("Please select a valid operator.");
+const answer = await inquirer.prompt(
+    [
+        {
+            name: 'firstnumber',
+            type: 'number',
+            message: 'Enter Your First Number'
+        },
+        {
+            name: 'secondnumber',
+            type: 'number',
+            message: 'Enter Your Second Number'
+        },
+        {
+            message: 'Select Of the one operator to perfrom Action.',
+            type: 'list',
+            name: 'operator',
+            choices: ['+', '-', '*', '/']
+        }
+    ]
+)
+
+// console.log(answer);
+
+if (answer.operator === '+') {
+    console.log(answer.firstnumber + answer.secondnumber);
+} else if (answer.operator === '-'){ 
+    console.log(answer.firstnumber - answer.secondnumber)
+}else if(answer.operator === '*'){
+    console.log(answer.firstnumber * answer.secondnumber);
+}else if(answer.operator === '/'){
+    console.log(answer.firstnumber / answer.secondnumber);
 }
